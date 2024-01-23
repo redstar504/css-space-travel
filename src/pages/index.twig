@@ -10,20 +10,24 @@
     {% endblock stylesheets %}
 </head>
 <body>
+<div id="root">
     <header>
         <span id="logo"></span>
         <nav>
-            <input id="hamburgerToggle" type="checkbox" />
+            <input id="hamburgerToggle" type="checkbox"/>
             <label for="hamburgerToggle" id="icon"></label>
             <aside>
                 <ol>
                     <li class="active">
                         <a href="#">Home</a>
-                    </li><li>
+                    </li>
+                    <li>
                         <a href="#">Destination</a>
-                    </li><li>
+                    </li>
+                    <li>
                         <a href="#">Crew</a>
-                    </li><li>
+                    </li>
+                    <li>
                         <a href="#">Technology</a>
                     </li>
                 </ol>
@@ -31,11 +35,16 @@
         </nav>
     </header>
 
-<div id="contentWrapper">
-    <h5>So, you want to travel to</h5>
-    <h1>Space</h1>
-    <p>Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the
-        edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!</p>
-    <button>Explore</button>
+    <main>
+        <article>
+            <h5>So, you want to travel to</h5>
+            <h1>Space</h1>
+            <p>
+                Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the
+                edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!
+            </p>
+        </article>
+        <button>Explore</button>
+    </main>
 </div>
 </body>

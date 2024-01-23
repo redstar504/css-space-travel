@@ -63,12 +63,13 @@ body {
     color: var(--white);
     background-image: url(assets/home/background-home-mobile.jpg);
     background-size: cover;
-    padding: 1.5em;
+    background-position: center bottom;
     animation-name: zoomAnimation;
     animation-duration: 60s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    padding: 0 1.5em;
 }
 
 @keyframes zoomAnimation {
@@ -84,6 +85,8 @@ h1 {
     font-size: 5em;
     font-family: Bellefair, serif;
     text-transform: uppercase;
+    line-height: normal;
+    font-weight: 400;
 }
 
 h5 {
@@ -92,6 +95,7 @@ h5 {
     text-transform: uppercase;
     color: var(--light-blue);
     letter-spacing: 0.16875em;
+    font-weight: 400;
 }
 
 p {
@@ -101,20 +105,17 @@ p {
     color: var(--light-blue);
 }
 
-#contentWrapper {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 100%;
+#root {
+    height: 100%;
 }
 
 header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 1.5em 0;
+    height: 6em;
+    margin-bottom: -6em;
 }
 
 #logo {
@@ -123,6 +124,7 @@ header {
     height: 2.5em;
     background-image: url(assets/shared/logo.svg);
     background-size: cover;
+    align-self: center;
 }
 
 nav #icon {
@@ -188,6 +190,22 @@ nav aside a::before {
     font-weight: 700;
 }
 
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding: 6em 0 0;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
 button {
     width: 9.375rem;
     height: 9.375rem;
@@ -198,16 +216,17 @@ button {
     text-transform: uppercase;
     color: var(--dark-blue);
     transition: box-shadow .2s ease-in-out;
+    flex-shrink: 0;
 }
 
 button:hover {
-    box-shadow: 0 0 0 2.75rem #24262F;
+    box-shadow: 0 0 0 2.75rem rgba(0, 0, 0, 0.4);
 }
 
 @media (min-width: 48em) {
     body {
         background-image: url(assets/home/background-home-tablet.jpg);
-        padding: 0 2.44em;
+        padding: 0;
     }
 
     #logo {
@@ -215,8 +234,16 @@ button:hover {
         height: 3em;
     }
 
+    header {
+        padding: 0 2.4375em;
+    }
+
+    h1 {
+        font-size: 9.375em;
+    }
+
     nav {
-        margin-right: -2.44em;
+        margin-right: -2.4375em;
     }
 
     nav #icon {
@@ -228,8 +255,8 @@ button:hover {
         width: auto;
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(40px);
-        height: 6rem;
         padding: 0 2.5em;
+        right: 0;
     }
 
     nav aside ol {
@@ -266,8 +293,72 @@ button:hover {
         display: none;
     }
 
-    #contentWrapper {
-        padding: 2em 8.75em;
+    main {
+        padding-left: 9.9375em;
+        padding-right: 9.9375em;
+    }
+}
+
+@media (min-width: 68.75em) {
+    body {
+        background: url(assets/home/background-home-desktop.jpg);
+        padding: 2.5em 3.4375em 0;
+        overflow-x: hidden;
+    }
+
+    #root {
+        margin: 0 auto;
+    }
+
+    header {
+        padding: 0 3.4375em;
+        column-gap: 4em;
+    }
+
+    header::before {
+        content: '';
+        height: 1px;
+        align-self: center;
+        background: rgba(255, 255, 255, 0.15);
+        order: 1;
+        margin-right: -5.875em;
+        z-index: 2;
+        flex-grow: 4;
+    }
+
+    nav {
+        margin-right: -3.4375em;
+        order: 2;
+        flex-basis: 50%;
+        flex-grow: 1;
+    }
+
+    nav aside {
+        padding: 0 0 0 1.875em;
+        margin-right: -3.4375em;
+    }
+
+    nav li a::before {
+        display: inline-block;
+    }
+
+    main {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 80em;
+        margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    article {
+        text-align: left;
+        flex-basis: 30em;
+    }
+
+    button {
+        width: 17.125rem;
+        height: 17.125rem;
     }
 }
 
