@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow&display=swap');
+
 /* start reset */
 
 html, body, div, p, h1, h2, h3, h4, h5, h6,
@@ -44,3 +46,228 @@ ul {
 }
 
 /* end reset */
+
+:root {
+    --dark-blue: hsl(230, 35%, 7%);
+    --white: hsl(0, 0%, 100%);
+    --light-blue: hsl(231, 77%, 90%);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font: 400 1em/1.5 Barlow Condensed, sans-serif;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    background-image: url(assets/home/background-home-mobile.jpg);
+    background-size: cover;
+    padding: 1.5em;
+    animation-name: zoomAnimation;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes zoomAnimation {
+    0% {
+        background-size: 100% 100%;
+    }
+    100% {
+        background-size: 120% 120%;
+    }
+}
+
+h1 {
+    font-size: 5em;
+    font-family: Bellefair, serif;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 1em;
+    font-family: Barlow Condensed, sans-serif;
+    text-transform: uppercase;
+    color: var(--light-blue);
+    letter-spacing: 0.16875em;
+}
+
+p {
+    font-family: Barlow, sans-serif;
+    font-size: 0.9375em;
+    line-height: 1.5625rem;
+    color: var(--light-blue);
+}
+
+#contentWrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100%;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    display: block;
+    width: 2.5em;
+    height: 2.5em;
+    background-image: url(assets/shared/logo.svg);
+    background-size: cover;
+}
+
+nav #icon {
+    width: 1.5em;
+    height: 1.3125em;
+    background-image: url(assets/shared/icon-hamburger.svg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 99;
+    display: block;
+    position: absolute;
+    top: 2.09375em;
+    right: 1.5em;
+}
+
+nav #hamburgerToggle {
+    display: none;
+}
+
+nav #hamburgerToggle:checked + #icon {
+    background-image: url(assets/shared/icon-close.svg);
+}
+
+nav #hamburgerToggle:checked ~ aside {
+    right: 0;
+}
+
+nav aside {
+    position: fixed;
+    top: 0;
+    right: -15.875em;
+    width: 15.875em;
+    height: 100%;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    transition: .1s right ease-in-out;
+}
+
+nav aside ol {
+    margin: 7.375em 2em 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    counter-reset: menuItem;
+    list-style: none;
+}
+
+nav aside a {
+    color: var(--white);
+    font-family: Barlow Condensed, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.16875em;
+    counter-increment: menuItem;
+}
+
+nav aside a::before {
+    content: "0" counter(menuItem);
+    display: inline-block;
+    margin-right: 0.875em;
+    font-weight: 700;
+}
+
+button {
+    width: 9.375rem;
+    height: 9.375rem;
+    background: var(--white);
+    border-radius: 50%;
+    font-family: Bellefair, serif;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    color: var(--dark-blue);
+    transition: box-shadow .2s ease-in-out;
+}
+
+button:hover {
+    box-shadow: 0 0 0 2.75rem #24262F;
+}
+
+@media (min-width: 48em) {
+    body {
+        background-image: url(assets/home/background-home-tablet.jpg);
+        padding: 0 2.44em;
+    }
+
+    #logo {
+        width: 3em;
+        height: 3em;
+    }
+
+    nav {
+        margin-right: -2.44em;
+    }
+
+    nav #icon {
+        display: none;
+    }
+
+    nav aside {
+        position: static;
+        width: auto;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(40px);
+        height: 6rem;
+        padding: 0 2.5em;
+    }
+
+    nav aside ol {
+        height: 100%;
+        margin: 0;
+        flex-direction: row;
+        column-gap: 2.5em;
+        justify-content: center;
+    }
+
+    nav li {
+        border-bottom-width: .1875em;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        transition: .7s border-bottom-color ease-in-out;
+    }
+
+    nav li.active {
+        border-bottom-color: var(--white);
+    }
+
+    nav li:hover {
+        border-bottom-color: rgba(255, 255, 255, 0.5);
+    }
+
+    nav li a {
+        display: block;
+        height: 100%;
+        vertical-align: middle;
+        line-height: 6em;
+    }
+
+    nav li a::before {
+        display: none;
+    }
+
+    #contentWrapper {
+        padding: 2em 8.75em;
+    }
+}
+
