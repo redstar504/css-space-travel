@@ -63,13 +63,13 @@ body {
     color: var(--white);
     background-image: url(assets/home/background-home-mobile.jpg);
     background-size: cover;
-    background-position: center bottom;
     animation-name: zoomAnimation;
     animation-duration: 60s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     padding: 0 1.5em;
+    background-attachment: fixed;
 }
 
 @keyframes zoomAnimation {
@@ -77,25 +77,36 @@ body {
         background-size: 100% 100%;
     }
     100% {
-        background-size: 120% 120%;
+        background-size: 125% 125%;
     }
 }
 
 h1 {
-    font-size: 5em;
-    font-family: Bellefair, serif;
-    text-transform: uppercase;
-    line-height: normal;
-    font-weight: 400;
-}
-
-h5 {
     font-size: 1em;
     font-family: Barlow Condensed, sans-serif;
     text-transform: uppercase;
     color: var(--light-blue);
     letter-spacing: 0.16875em;
     font-weight: 400;
+}
+
+h1 b {
+    margin: 1rem 0 0;
+    font-size: 5rem;
+    font-family: Bellefair, serif;
+    text-transform: uppercase;
+    line-height: normal;
+    font-weight: 400;
+    color: var(--white);
+    display: block;
+}
+
+h2 {
+    font-size: 3.5em;
+    font-family: Bellefair, serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: normal;
 }
 
 p {
@@ -105,7 +116,7 @@ p {
     color: var(--light-blue);
 }
 
-#root {
+#container {
     height: 100%;
 }
 
@@ -113,9 +124,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 1.5em 0;
-    height: 6em;
-    margin-bottom: -6em;
+    padding: 2em 0;
 }
 
 #logo {
@@ -127,77 +136,12 @@ header {
     align-self: center;
 }
 
-nav #icon {
-    width: 1.5em;
-    height: 1.3125em;
-    background-image: url(assets/shared/icon-hamburger.svg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    z-index: 99;
-    display: block;
-    position: absolute;
-    top: 2.09375em;
-    right: 1.5em;
-}
-
-nav #hamburgerToggle {
-    display: none;
-}
-
-nav #hamburgerToggle:checked + #icon {
-    background-image: url(assets/shared/icon-close.svg);
-}
-
-nav #hamburgerToggle:checked ~ aside {
-    right: 0;
-}
-
-nav aside {
-    position: fixed;
-    top: 0;
-    right: -15.875em;
-    width: 15.875em;
-    height: 100%;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    transition: .1s right ease-in-out;
-}
-
-nav aside ol {
-    margin: 7.375em 2em 0;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    row-gap: 2em;
-    counter-reset: menuItem;
-    list-style: none;
-}
-
-nav aside a {
-    color: var(--white);
-    font-family: Barlow Condensed, sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.16875em;
-    counter-increment: menuItem;
-}
-
-nav aside a::before {
-    content: "0" counter(menuItem);
-    display: inline-block;
-    margin-right: 0.875em;
-    font-weight: 700;
-}
-
 main {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     text-align: center;
-    padding: 6em 0 0;
 }
 
 article {
@@ -206,24 +150,9 @@ article {
     row-gap: 1em;
 }
 
-button {
-    width: 9.375rem;
-    height: 9.375rem;
-    background: var(--white);
-    border-radius: 50%;
-    font-family: Bellefair, serif;
-    font-size: 1.25em;
-    text-transform: uppercase;
-    color: var(--dark-blue);
-    transition: box-shadow .2s ease-in-out;
-    flex-shrink: 0;
-}
+/** p2 start **/
 
-button:hover {
-    box-shadow: 0 0 0 2.75rem rgba(0, 0, 0, 0.4);
-}
-
-@media (min-width: 48em) {
+@media (min-width: 40em) {
     body {
         background-image: url(assets/home/background-home-tablet.jpg);
         padding: 0;
@@ -239,7 +168,16 @@ button:hover {
     }
 
     h1 {
-        font-size: 9.375em;
+        font-size: 1.25em;
+    }
+
+    h1 b {
+        font-size: 9.375rem;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.75;
     }
 
     nav {
@@ -293,9 +231,23 @@ button:hover {
         display: none;
     }
 
-    main {
-        padding-left: 9.9375em;
-        padding-right: 9.9375em;
+    #introText {
+        max-width: 27.75em;
+    }
+
+    article {
+        flex-grow: 1;
+        justify-content: space-evenly;
+    }
+
+    #indexPage #buttonWrapper {
+        display:block;
+    }
+
+    #indexPage #buttonWrapper .button {
+        width: 15.125rem;
+        height: 15.125rem;
+        font-size: 2em;
     }
 }
 
@@ -303,11 +255,11 @@ button:hover {
     body {
         background: url(assets/home/background-home-desktop.jpg);
         padding: 2.5em 3.4375em 0;
-        overflow-x: hidden;
     }
 
-    #root {
+    #container {
         margin: 0 auto;
+        overflow: hidden;
     }
 
     header {
@@ -345,6 +297,7 @@ button:hover {
     main {
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-start;
         max-width: 80em;
         margin: 0 auto;
         padding-left: 0;
@@ -356,9 +309,17 @@ button:hover {
         flex-basis: 30em;
     }
 
-    button {
+    .button {
         width: 17.125rem;
         height: 17.125rem;
+    }
+
+    h1 {
+        font-size: 1.75em;
+    }
+
+    p {
+        font-size: 1.125em;
     }
 }
 

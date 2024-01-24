@@ -1,0 +1,126 @@
+#indexPage #buttonWrapper {
+    flex-grow:1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#indexPage .button {
+    width: 9.375rem;
+    height: 9.375rem;
+    background: var(--white);
+    border-radius: 50%;
+    font-family: Bellefair, serif;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    color: var(--dark-blue);
+    transition: box-shadow .2s ease-in-out;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+#indexPage .button:hover {
+    box-shadow: 0 0 0 2.75rem rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 40em) {
+    body {
+        background-image: url(assets/home/background-home-tablet.jpg);
+        padding: 0;
+    }
+
+    #logo {
+        width: 3em;
+        height: 3em;
+    }
+
+    header {
+        padding: 0 2.4375em;
+    }
+
+    h1 {
+        font-size: 1.25em;
+    }
+
+    h1 b {
+        font-size: 9.375rem;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.75;
+    }
+
+    nav {
+        margin-right: -2.4375em;
+    }
+
+    nav #icon {
+        display: none;
+    }
+
+    nav aside {
+        position: static;
+        width: auto;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(40px);
+        padding: 0 2.5em;
+        right: 0;
+    }
+
+    nav aside ol {
+        height: 100%;
+        margin: 0;
+        flex-direction: row;
+        column-gap: 2.5em;
+        justify-content: center;
+    }
+
+    nav li {
+        border-bottom-width: .1875em;
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        transition: .7s border-bottom-color ease-in-out;
+    }
+
+    nav li.active {
+        border-bottom-color: var(--white);
+    }
+
+    nav li:hover {
+        border-bottom-color: rgba(255, 255, 255, 0.5);
+    }
+
+    nav li a {
+        display: block;
+        height: 100%;
+        vertical-align: middle;
+        line-height: 6em;
+    }
+
+    nav li a::before {
+        display: none;
+    }
+
+    #introText {
+        max-width: 27.75em;
+    }
+
+    article {
+        flex-grow: 1;
+        justify-content: space-evenly;
+    }
+
+    #indexPage #buttonWrapper {
+        display:block;
+    }
+
+    #indexPage #buttonWrapper .button {
+        width: 15.125rem;
+        height: 15.125rem;
+        font-size: 2em;
+    }
+}

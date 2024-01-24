@@ -4,12 +4,40 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/src/assets/favicon-32x32.png"/>
     <meta name="viewport" content="initial-scale=1.0, viewport-fit=cover"/>
-    <title>DevJobs Web App</title>
+    <title>Space Travel</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="/src/screen.css">
+        <link rel="stylesheet" href="/src/nav.css">
+        <link rel="stylesheet" href="/src/index.css">
+        <link rel="stylesheet" href="/src/destination.css">
     {% endblock stylesheets %}
 </head>
-<body>
-<h1>Title</h1>
-{% block content %}{% endblock content %}
+<body id="{{ pageId }}">
+<div id="container">
+    <header>
+        <a href="/index" id="logo"></a>
+        <nav>
+            <input id="hamburgerToggle" type="checkbox" hidden>
+            <label for="hamburgerToggle" id="icon"></label>
+            <aside>
+                <ol>
+                    <li class="active">
+                        <a href="/index">Home</a>
+                    </li>
+                    <li>
+                        <a href="/destination">Destination</a>
+                    </li>
+                    <li>
+                        <a href="#">Crew</a>
+                    </li>
+                    <li>
+                        <a href="#">Technology</a>
+                    </li>
+                </ol>
+            </aside>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+</div>
 </body>
