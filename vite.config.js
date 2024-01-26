@@ -7,5 +7,8 @@ export default {
         twig({
             root: './src',
         })
-    ]
+    ],
+    build: {
+        minify: false,
+    },
 }
