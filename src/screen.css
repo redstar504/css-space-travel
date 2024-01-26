@@ -517,6 +517,10 @@ h1 #destinationIndex {
         text-align: left;
     }
 
+    #homePage h1 {
+        align-self: flex-start;
+    }
+
     #homePage #buttonWrapper {
         grid-column: 2;
         grid-row: 1;
