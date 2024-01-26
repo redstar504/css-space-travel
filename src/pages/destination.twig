@@ -3,14 +3,17 @@
 
 {% block content %}
     <main>
+        <h1>
+            <span id="destinationIndex">01</span>
+            Pick Your Destination
+        </h1>
+
+        <div id="planetWrapper">
+            <img class="planet" src="/src/assets/destination/image-moon.png" alt="the moon"/>
+        </div>
+
         <article>
-            <h1><span id="destinationCt">01</span> Pick Your Destination</h1>
-            <div id="planetWrapper">
-                <img class="planet" src="/src/assets/destination/image-moon.png" alt="the moon"/>
-            </div>
-        </article>
-        <article>
-            <ul id="destinationList">
+            <ul id="chooseDestination">
                 <li class="selected">
                     <a href="#">Moon</a>
                 </li>
@@ -24,12 +27,15 @@
                     <a href="#">Titan</a>
                 </li>
             </ul>
+
             <h2>Moon</h2>
+
             <p>
                 Discover Earth from an unparalleled vantage point on a rejuvenating lunar retreat. Immerse yourself in
                 history by exploring the Luna 2 and Apollo 11 landing sites, ensuring a unique blend of relaxation and
                 historical enrichment.
             </p>
+
             <ul id="destinationStats">
                 <li>
                     <h3>Avg. Distance</h3>
@@ -40,6 +46,7 @@
                     <span>3 days</span>
                 </li>
             </ul>
+
         </article>
     </main>
 {% endblock %}
