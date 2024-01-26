@@ -484,6 +484,7 @@ h1 #destinationIndex {
     }
 
     #homePage #buttonWrapper {
+        align-self: center;
         margin-top: 6em;
     }
 
