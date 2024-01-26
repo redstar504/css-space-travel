@@ -483,11 +483,6 @@ h1 #destinationIndex {
         font-size: 1.125em;
     }
 
-    #homePage #buttonWrapper {
-        align-self: center;
-        margin-top: 6em;
-    }
-
     #homePage #buttonWrapper .button {
         width: 17.125rem;
         height: 17.125rem;
