@@ -536,5 +536,10 @@ h1 #destinationIndex {
         width: 26em;
         height: 26em;
     }
+
+    #destinationPage #destinationStats {
+        column-gap: 6em;
+        justify-content: flex-start;
+    }
 }
 
