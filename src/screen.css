@@ -8,7 +8,7 @@
 
 /* start reset */
 
-html, body, div, p, h1, h2, h3, h4, h5, h6,
+html, body, div, p, h2, h3, h3, h4, h5, h6,
 ul, ol, li, dl, dt, dd, form, fieldset, caption, legend,
 table, tr, td, th, address, blockquote, img {
     margin: 0;
@@ -85,7 +85,7 @@ body#destinationPage {
     background-image: url(assets/destination/background-destination-mobile.jpg);
 }
 
-h1 {
+h2 {
     font-size: 1em;
     font-family: Barlow Condensed, sans-serif;
     text-transform: uppercase;
@@ -94,7 +94,7 @@ h1 {
     font-weight: 400;
 }
 
-h1 b {
+h2 b {
     margin: 1rem 0 0;
     font-size: 5rem;
     font-family: Bellefair, serif;
@@ -105,7 +105,7 @@ h1 b {
     display: block;
 }
 
-h2 {
+h3 {
     font-size: 3.5em;
     font-family: Bellefair, serif;
     text-transform: uppercase;
@@ -131,13 +131,14 @@ header {
     height: 6.5em;
 }
 
-header #logo {
+h1 {
     display: block;
-    width: 2.5em;
-    height: 2.5em;
+    width: 2.5rem;
+    height: 2.5rem;
     background-image: url(assets/shared/logo.svg);
     background-size: cover;
     align-self: center;
+    text-indent: -999em;
 }
 
 nav #icon {
@@ -201,8 +202,10 @@ nav #wrapperForMobileSidebar a::before {
 
 main {
     height: calc(100% - 8em); /* escape header height on 100% body */
-    display: grid;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 article {
@@ -214,6 +217,7 @@ article {
 }
 
 #homePage #buttonWrapper {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,7 +245,7 @@ article {
     box-shadow: 0 0 0 2.75rem rgba(0, 0, 0, 0.4);
 }
 
-#destinationPage h1 {
+#destinationPage h2 {
     color: var(--white);
 }
 
@@ -251,7 +255,7 @@ article {
     margin: 1em auto;
 }
 
-h1 #destinationIndex {
+h2 #pageIndex {
     opacity: 0.25;
     margin-right: 1em;
     font-weight: 700;
@@ -301,6 +305,22 @@ h1 #destinationIndex {
     text-transform: uppercase;
 }
 
+body#crewPage {
+    background-image: url(assets/crew/background-crew-mobile.jpg);
+}
+
+#crewPage #crewImageWrapper {
+    align-self: stretch;
+    border-bottom: 1px solid #383B4B;
+}
+
+#crewPage #crewImage {
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    width: 50%;
+}
+
 @media (min-width: 40em) {
     body {
         background-image: url(assets/home/background-home-tablet.jpg);
@@ -316,11 +336,11 @@ h1 #destinationIndex {
         height: 3em;
     }
 
-    h1 {
+    h2 {
         font-size: 1.25em;
     }
 
-    h1 b {
+    h2 b {
         font-size: 9.375rem;
     }
 
@@ -380,6 +400,7 @@ h1 #destinationIndex {
 
     main {
         padding: 0 2.375em;
+        display: grid;
     }
 
     #homePage article p {
@@ -417,7 +438,7 @@ h1 #destinationIndex {
         font-size: 1rem;
     }
 
-    #destinationPage #chooseDestination h2 {
+    #destinationPage #chooseDestination h3 {
         font-size: 5em;
     }
 }
@@ -475,7 +496,7 @@ h1 #destinationIndex {
         grid-template-rows: 2.625em 1fr;
     }
 
-    h1 {
+    h2 {
         font-size: 1.75em;
     }
 
@@ -488,7 +509,7 @@ h1 #destinationIndex {
         height: 17.125rem;
     }
 
-    #destinationPage h2 {
+    #destinationPage h3 {
         font-size: 6.25em;
     }
 
@@ -512,7 +533,7 @@ h1 #destinationIndex {
         text-align: left;
     }
 
-    #homePage h1 {
+    #homePage h2 {
         align-self: flex-start;
     }
 
