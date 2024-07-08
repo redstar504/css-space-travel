@@ -3,8 +3,8 @@
 
 {% block content %}
     <main>
-        <h2>
-            <span id="pageIndex">01</span>
+        <h2 id="pageTitle">
+            <strong>01</strong>
             Pick Your Destination
         </h2>
 
@@ -12,41 +12,40 @@
             <img class="planet" src="/src/assets/destination/image-moon.png" alt="the moon"/>
         </div>
 
-        <article>
-            <ul id="chooseDestination">
-                <li class="selected">
-                    <a href="#">Moon</a>
-                </li>
-                <li>
-                    <a href="#">Mars</a>
-                </li>
-                <li>
-                    <a href="#">Europa</a>
-                </li>
-                <li>
-                    <a href="#">Titan</a>
-                </li>
-            </ul>
+        <ul id="destinationList">
+            <li class="selected">
+                <a href="#"><small>Moon</small></a>
+            </li>
+            <li>
+                <a href="#"><small>Mars</small></a>
+            </li>
+            <li>
+                <a href="#"><small>Europa</small></a>
+            </li>
+            <li>
+                <a href="#"><small>Titan</small></a>
+            </li>
+        </ul>
 
-            <h2>Moon</h2>
+        <h3>Moon</h3>
 
-            <p>
-                Discover Earth from an unparalleled vantage point on a rejuvenating lunar retreat. Immerse yourself in
-                history by exploring the Luna 2 and Apollo 11 landing sites, ensuring a unique blend of relaxation and
-                historical enrichment.
-            </p>
+        <p>
+            Discover Earth from an unparalleled vantage point on a rejuvenating lunar retreat. Immerse yourself in
+            history by exploring the Luna 2 and Apollo 11 landing sites, ensuring a unique blend of relaxation and
+            historical enrichment.
+        </p>
 
-            <ul id="destinationStats">
-                <li>
-                    <h3>Avg. Distance</h3>
-                    <span>384,400 km</span>
-                </li>
-                <li>
-                    <h3>Est. Travel Time</h3>
-                    <span>3 days</span>
-                </li>
-            </ul>
+        <div class="hr"></div>
 
-        </article>
+        <ul id="destinationStats">
+            <li>
+                <small class="xs">Avg. Distance</small>
+                <em class="lg">384,400 km</em>
+            </li>
+            <li>
+                <small class="xs">Est. Travel Time</small>
+                <em class="lg">3 days</em>
+            </li>
+        </ul>
     </main>
 {% endblock %}

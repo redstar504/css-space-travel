@@ -8,7 +8,7 @@
 
 /* start reset */
 
-html, body, div, p, h2, h3, h3, h4, h5, h6,
+html, body, div, p, h1, h2, h3, h3, h4, h5, h6,
 ul, ol, li, dl, dt, dd, form, fieldset, caption, legend,
 table, tr, td, th, address, blockquote, img {
     margin: 0;
@@ -51,7 +51,26 @@ ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* end reset */
+
+@keyframes zoomAnimation {
+    0% {
+        background-size: 100% 100%;
+    }
+    100% {
+        background-size: 125% 125%;
+    }
+}
+
+/* end animation */
+
+html {
+    touch-action: manipulation;
+}
 
 html, body {
     height: 100%;
@@ -63,30 +82,33 @@ body {
     color: var(--white);
     background-image: url(assets/home/background-home-mobile.jpg);
     background-size: cover;
-    animation-name: zoomAnimation;
-    animation-duration: 60s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    padding: 0 1.5em;
+    animation: zoomAnimation 60s linear infinite alternate;
     background-attachment: fixed;
-}
-
-@keyframes zoomAnimation {
-    0% {
-        background-size: 100% 100%;
-    }
-    100% {
-        background-size: 125% 125%;
-    }
 }
 
 body#destinationPage {
     background-image: url(assets/destination/background-destination-mobile.jpg);
 }
 
-h2 {
-    font-size: 1em;
+h1 {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(assets/shared/logo.svg);
+    background-size: cover;
+    align-self: center;
+    text-indent: -999em;
+}
+
+h1 a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+small,
+h2#pageTitle {
+    font-size: 1rem;
     font-family: Barlow Condensed, sans-serif;
     text-transform: uppercase;
     color: var(--light-blue);
@@ -94,8 +116,21 @@ h2 {
     font-weight: 400;
 }
 
-h2 b {
-    margin: 1rem 0 0;
+h2#pageTitle {
+    color: var(--white);
+}
+
+h2#pageTitle strong {
+    opacity: .25;
+    margin-right: 1em;
+    font-weight: 700;
+}
+
+small.xs {
+    font-size: .875em;
+}
+
+h2 {
     font-size: 5rem;
     font-family: Bellefair, serif;
     text-transform: uppercase;
@@ -118,41 +153,51 @@ p {
     font-size: 0.9375em;
     line-height: 1.5625rem;
     color: var(--light-blue);
+    margin: 0 .5em;
+}
+
+em {
+    font-family: Bellefair, serif;
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: 1.5rem;
+    color: #fff;
+    display: block;
+}
+
+em.lg {
+    font-size: 1.75rem;
 }
 
 #container {
-    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1em;
+    padding: 0 0 1em;
+    position: relative;
 }
 
 header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    height: 6.5em;
-}
-
-h1 {
-    display: block;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-image: url(assets/shared/logo.svg);
-    background-size: cover;
-    align-self: center;
-    text-indent: -999em;
+    flex-shrink: 0;
+    height: 6rem;
 }
 
 nav #icon {
+    display: block;
     width: 1.5em;
     height: 1.3125em;
+    position: absolute;
+    top: 2.25em;
+    right: 0;
     background-image: url(assets/shared/icon-hamburger.svg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     z-index: 99;
-    display: block;
-    position: absolute;
-    top: 2.375em;
-    right: 1.5em;
 }
 
 nav #hamburgerToggle:checked + #icon {
@@ -200,20 +245,14 @@ nav #wrapperForMobileSidebar a::before {
     font-weight: 700;
 }
 
-main {
-    height: calc(100% - 8em); /* escape header height on 100% body */
+main, #contentWrapper, #content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-article {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    row-gap: 1em;
+    row-gap: 1.5em;
 }
 
 #homePage #buttonWrapper {
@@ -245,68 +284,48 @@ article {
     box-shadow: 0 0 0 2.75rem rgba(0, 0, 0, 0.4);
 }
 
-#destinationPage h2 {
-    color: var(--white);
-}
-
 #destinationPage .planet {
     width: 12em;
     height: 12em;
-    margin: 1em auto;
 }
 
-h2 #pageIndex {
-    opacity: 0.25;
-    margin-right: 1em;
-    font-weight: 700;
-}
-
-#chooseDestination {
+#destinationList {
     display: flex;
     justify-content: center;
     column-gap: 2.25em;
 }
 
-#destinationPage h3,
-#destinationPage #chooseDestination a {
-    color: var(--light-blue);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: .875rem;
-    letter-spacing: 0.14763rem;
+#destinationList a {
     display: block;
-    font-weight: 400;
-}
-
-#chooseDestination a {
     height: 1.75rem;
     margin-right: -2px; /* small font kerning issue */
 }
 
-#chooseDestination .selected {
+#destinationList .selected {
     border-bottom: 3px solid var(--white);
 }
 
-#chooseDestination .selected a {
+#destinationList .selected a {
     color: var(--white);
 }
 
+.hr {
+    display: block;
+    height: 1px;
+    background: #383B4B;
+    width: 100%;
+}
+
 #destinationStats {
-    border-top: 1px solid #383B4B;
-    padding: 1.5em 0 0;
     display: flex;
     flex-direction: column;
-    row-gap: 1.5em;
+    row-gap: 1em;
 }
 
-#destinationStats li span {
-    font-size: 1.75em;
-    font-family: Bellefair, serif;
-    text-transform: uppercase;
-}
+/* CREW PAGE STYLES */
 
-body#crewPage {
-    background-image: url(assets/crew/background-crew-mobile.jpg);
+#crewPage {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/crew/background-crew-mobile.jpg);
 }
 
 #crewPage #crewImageWrapper {
@@ -321,32 +340,111 @@ body#crewPage {
     width: 50%;
 }
 
+#crewPage h3 {
+    font-family: Bellefair, serif;
+    text-transform: uppercase;
+    opacity: .25;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+#crewPage #crewNav ul {
+    display: flex;
+    text-indent: -999em;
+    column-gap: 1em;
+}
+
+#crewPage #crewNav li a {
+    display: block;
+    width: .625em;
+    height: .625em;
+    border-radius: 50%;
+    background: #979797;
+    opacity: 17%;
+}
+
+#crewPage #crewNav li.active a {
+    background: #fff;
+    opacity: 1;
+}
+
+/* END CREW PAGE STYLES */
+
+/* TECHNOLOGY PAGE STYLES */
+
+#techPage {
+    background-image: url(/src/assets/tech/background-technology-mobile.jpg);
+    background-size: 375px 110px;
+    background-attachment: local;
+}
+
+#techPage #techImageWrapper {
+    margin: 0 -1em;
+    height: 10.625em;
+    background: url(/src/assets/tech/image-launch-vehicle-landscape.jpg) 0 0 no-repeat;
+    background-size: contain;
+}
+
+#techPage #techImageWrapper img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+#techPage #techNav ol {
+    display: flex;
+    list-style: none;
+    column-gap: 1em;
+}
+
+#techNav .active a {
+    background: var(--white);
+    color: #0B0D17;
+}
+
+#techNav a {
+    color: var(--white);
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    line-height: 2.5em;
+    font-family: Bellefair, serif;
+}
+
+/* END TECHNOLOGY PAGE STYLES */
+
 @media (min-width: 40em) {
-    body {
-        background-image: url(assets/home/background-home-tablet.jpg);
-        padding: 0 2.5em;
-    }
-
-    body#destinationPage {
-        background-image: url(assets/destination/background-destination-tablet.jpg);
-    }
-
-    header #logo {
-        width: 3em;
-        height: 3em;
-    }
-
     h2 {
-        font-size: 1.25em;
+        font-size: 9.375em;
     }
 
-    h2 b {
-        font-size: 9.375rem;
+    h3 {
+        font-size: 5em;
     }
 
     p {
         font-size: 1em;
         line-height: 1.75;
+    }
+
+    body {
+        background-image: url(assets/home/background-home-tablet.jpg);
+    }
+
+    #destinationPage {
+        background-image: url(assets/destination/background-destination-tablet.jpg);
+    }
+
+    #container {
+        margin: 0 2.5em;
+    }
+
+    header #logo {
+        width: 3em;
+        height: 3em;
     }
 
     nav {
@@ -399,16 +497,7 @@ body#crewPage {
     }
 
     main {
-        padding: 0 2.375em;
-        display: grid;
-    }
-
-    #homePage article p {
-        max-width: 27.75em;
-    }
-
-    #homePage #buttonWrapper {
-        display: block;
+        padding: 2em 0 0;
     }
 
     #homePage #buttonWrapper .button {
@@ -417,6 +506,7 @@ body#crewPage {
         font-size: 2em;
     }
 
+    /****/
     #destinationPage #destinationStats {
         width: 100%;
         align-self: center;
@@ -424,14 +514,14 @@ body#crewPage {
         justify-content: space-evenly;
     }
 
-    #destinationPage main {
-        align-items: stretch;
-        padding: 2em 0 0;
+    #destinationPage #planetWrapper {
+        margin: 3.75em 0 3.125em;
     }
 
     #destinationPage .planet {
-        width: 19em;
-        height: 19em;
+        width: 18.75em;
+        height: 18.75em;
+        margin: 0;
     }
 
     #destinationPage #chooseDestination a {
@@ -441,20 +531,27 @@ body#crewPage {
     #destinationPage #chooseDestination h3 {
         font-size: 5em;
     }
+
+    #destinationPage #destinationStats {
+        margin: 3.125em 0 0;
+    }
 }
 
 @media (min-width: 68.75em) {
+    p {
+        font-size: 1.125em;
+    }
+
+    small {
+        font-size: 1.75em;
+    }
+
     body {
         background-image: url(assets/home/background-home-desktop.jpg);
-        padding: 2.5em 3.4375em;
     }
 
-    body#destinationPage {
+    #destinationPage {
         background-image: url(assets/destination/background-destination-desktop.jpg);
-    }
-
-    body, #container {
-        overflow: visible;
     }
 
     header {
@@ -488,20 +585,32 @@ body#crewPage {
         display: inline-block;
     }
 
+    #container {
+        margin: 2.5em 3.4375em;
+    }
+
     main {
         flex-direction: row;
-        max-width: 84em;
-        margin: 0 auto;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 2.625em 1fr;
+        flex-grow: 0;
+        margin: auto 5% auto;
+        padding: 0;
     }
 
-    h2 {
-        font-size: 1.75em;
+    main #contentWrapper {
+        text-align: left;
+        align-items: center;
     }
 
-    p {
-        font-size: 1.125em;
+    main #content {
+        width: 28em;
+        text-align:left;
+        align-items: stretch;
+    }
+
+    #homePage #buttonWrapper {
+        align-self: stretch;
+        flex-direction: row;
+        align-items: flex-end;
     }
 
     #homePage #buttonWrapper .button {
@@ -520,28 +629,6 @@ body#crewPage {
         row-gap: 2em;
         min-height: 100%;
         align-items: flex-start;
-    }
-
-    #homePage main {
-        grid-template-rows: 1fr;
-    }
-
-    #homePage article {
-        grid-column: 1;
-        grid-row: 1;
-        justify-self: flex-start;
-        text-align: left;
-    }
-
-    #homePage h2 {
-        align-self: flex-start;
-    }
-
-    #homePage #buttonWrapper {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: center;
-        align-self: center;
     }
 
     #destinationPage #planetWrapper {
