@@ -66,6 +66,16 @@ a {
     }
 }
 
+@keyframes spinAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* end animation */
 
 html {
@@ -86,7 +96,7 @@ body {
     background-attachment: fixed;
 }
 
-body#destinationPage {
+#destinationPage {
     background-image: url(assets/destination/background-destination-mobile.jpg);
 }
 
@@ -107,7 +117,7 @@ h1 a {
 }
 
 small,
-h2#pageTitle {
+#pageTitle {
     font-size: 1rem;
     font-family: Barlow Condensed, sans-serif;
     text-transform: uppercase;
@@ -116,8 +126,9 @@ h2#pageTitle {
     font-weight: 400;
 }
 
-h2#pageTitle {
+#pageTitle {
     color: var(--white);
+    /*margin-bottom: auto;*/
 }
 
 h2#pageTitle strong {
@@ -163,6 +174,7 @@ em {
     font-size: 1.5rem;
     color: #fff;
     display: block;
+    white-space: nowrap;
 }
 
 em.lg {
@@ -217,6 +229,7 @@ nav #wrapperForMobileSidebar {
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     transition: .1s right ease-in-out;
+    z-index: 2;
 }
 
 nav #wrapperForMobileSidebar ol {
@@ -255,12 +268,17 @@ main, #contentWrapper, #content {
     row-gap: 1.5em;
 }
 
+#homePage #contentWrapper {
+    /*flex-basis: 50%;*/
+}
+
 #homePage #buttonWrapper {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-self: center;
+    /*flex-basis: 50%;*/
 }
 
 #homePage .button {
@@ -287,25 +305,26 @@ main, #contentWrapper, #content {
 #destinationPage .planet {
     width: 12em;
     height: 12em;
+    animation: spinAnimation 360s linear infinite;
 }
 
-#destinationList {
+#destinationNav {
     display: flex;
     justify-content: center;
     column-gap: 2.25em;
 }
 
-#destinationList a {
+#destinationNav a {
     display: block;
     height: 1.75rem;
     margin-right: -2px; /* small font kerning issue */
 }
 
-#destinationList .selected {
+#destinationNav .selected {
     border-bottom: 3px solid var(--white);
 }
 
-#destinationList .selected a {
+#destinationNav .selected a {
     color: var(--white);
 }
 
@@ -322,7 +341,7 @@ main, #contentWrapper, #content {
     row-gap: 1em;
 }
 
-/* CREW PAGE STYLES */
+/* Crew page styles */
 
 #crewPage {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/crew/background-crew-mobile.jpg);
@@ -343,9 +362,18 @@ main, #contentWrapper, #content {
 #crewPage h3 {
     font-family: Bellefair, serif;
     text-transform: uppercase;
-    opacity: .25;
     font-size: 1rem;
     font-weight: normal;
+}
+
+#crewPage h3 span {
+    opacity: .5;
+    line-height: 2em;
+}
+
+#crewNav {
+    margin: .5em 0;
+    list-style: none;
 }
 
 #crewPage #crewNav ul {
@@ -379,17 +407,17 @@ main, #contentWrapper, #content {
 }
 
 #techPage #techImageWrapper {
-    margin: 0 -1em;
-    height: 10.625em;
-    background: url(/src/assets/tech/image-launch-vehicle-landscape.jpg) 0 0 no-repeat;
-    background-size: contain;
+    width: calc(100% + 2em);
 }
 
 #techPage #techImageWrapper img {
+    width: 100%;
     display: block;
     object-fit: contain;
-    height: 100%;
-    width: 100%;
+}
+
+#techPage #techImageWrapper #portraitImage {
+    display: none;
 }
 
 #techPage #techNav ol {
@@ -419,6 +447,7 @@ main, #contentWrapper, #content {
 @media (min-width: 40em) {
     h2 {
         font-size: 9.375em;
+        align-self: stretch;
     }
 
     h3 {
@@ -434,12 +463,12 @@ main, #contentWrapper, #content {
         background-image: url(assets/home/background-home-tablet.jpg);
     }
 
-    #destinationPage {
-        background-image: url(assets/destination/background-destination-tablet.jpg);
-    }
-
     #container {
         margin: 0 2.5em;
+    }
+
+    header {
+        margin-top: 2em;
     }
 
     header #logo {
@@ -447,15 +476,15 @@ main, #contentWrapper, #content {
         height: 3em;
     }
 
-    nav {
+    #siteNav {
         margin-right: -2.5em; /* escape body-padding-x */
     }
 
-    nav #icon {
+    #siteNav #icon {
         display: none;
     }
 
-    nav #wrapperForMobileSidebar {
+    #siteNav #wrapperForMobileSidebar {
         position: static;
         width: auto;
         background: rgba(255, 255, 255, 0.04);
@@ -463,7 +492,7 @@ main, #contentWrapper, #content {
         padding: 0 3em;
     }
 
-    nav #wrapperForMobileSidebar ol {
+    #siteNav #wrapperForMobileSidebar ol {
         height: 100%;
         margin: 0;
         flex-direction: row;
@@ -471,33 +500,43 @@ main, #contentWrapper, #content {
         justify-content: center;
     }
 
-    nav li {
+    #siteNav li {
         border-bottom-width: .1875em;
         border-bottom-style: solid;
         border-bottom-color: transparent;
         transition: .7s border-bottom-color ease-in-out;
     }
 
-    nav li.active {
+    #siteNav li.active {
         border-bottom-color: var(--white);
     }
 
-    nav li:hover {
+    #siteNav li:hover {
         border-bottom-color: rgba(255, 255, 255, 0.5);
     }
 
-    nav li a {
+    #siteNav li a {
         display: block;
         height: 100%;
         line-height: 6em;
     }
 
-    nav #wrapperForMobileSidebar li a::before {
+    #siteNav #wrapperForMobileSidebar li a::before {
         display: none;
     }
 
     main {
         padding: 2em 0 0;
+    }
+
+    #pageTitle {
+        text-align: left;
+        font-size: 1.5em;
+    }
+
+    /* Home page styles */
+    #homePage #pageTitle {
+        color: var(--light-blue);
     }
 
     #homePage #buttonWrapper .button {
@@ -506,16 +545,16 @@ main, #contentWrapper, #content {
         font-size: 2em;
     }
 
-    /****/
+    /* Destination page styles */
+    #destinationPage {
+        background-image: url(assets/destination/background-destination-tablet.jpg);
+    }
+
     #destinationPage #destinationStats {
         width: 100%;
         align-self: center;
         flex-direction: row;
         justify-content: space-evenly;
-    }
-
-    #destinationPage #planetWrapper {
-        margin: 3.75em 0 3.125em;
     }
 
     #destinationPage .planet {
@@ -535,23 +574,72 @@ main, #contentWrapper, #content {
     #destinationPage #destinationStats {
         margin: 3.125em 0 0;
     }
+
+    /* Start crew page styles */
+    #crewPage {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/crew/background-crew-tablet.jpg);
+    }
+
+    #crewPage #container {
+        padding: 0;
+    }
+
+    #crewPage #contentWrapper {
+        order: -2;
+    }
+
+    #crewPage #pageTitle {
+        order: -3;
+        margin: auto;
+    }
+
+    #crewPage #crewNav {
+        order: 1;
+    }
+
+    #crewPage h3 {
+        font-size: 1.5em;
+    }
+
+    #crewPage h3 em {
+        font-size: 2.5rem;
+    }
+
+    #crewPage main {
+        justify-content: space-between;
+        margin: auto auto 0;
+        flex-grow: 1;
+    }
+
+    #crewPage #content {
+        margin: 0 12%;
+    }
+
+    #crewPage #crewImageWrapper {
+        border: none;
+    }
+
+    /* Start tech page styling */
+    #techPage {
+        background-image: url(/src/assets/tech/background-technology-desktop.jpg);
+    }
+
+    #techPage #techImageWrapper {
+        width: calc(100% + 5rem)
+    }
 }
 
 @media (min-width: 68.75em) {
-    p {
-        font-size: 1.125em;
-    }
-
-    small {
-        font-size: 1.75em;
-    }
-
     body {
         background-image: url(assets/home/background-home-desktop.jpg);
     }
 
-    #destinationPage {
-        background-image: url(assets/destination/background-destination-desktop.jpg);
+    p {
+        font-size: 1.125em;
+    }
+
+    h3 {
+        font-size: 6.25em;
     }
 
     header {
@@ -570,47 +658,63 @@ main, #contentWrapper, #content {
         flex-grow: 4;
     }
 
-    nav {
+    #siteNav {
         margin-right: -3.4375em;
         order: 2;
         flex-basis: 50%;
         flex-grow: 1;
     }
 
-    nav #wrapperForMobileSidebar {
+    #siteNav #wrapperForMobileSidebar {
         padding: 0 0 0 1.875em;
     }
 
-    nav #wrapperForMobileSidebar li a::before {
+    #siteNav #wrapperForMobileSidebar li a::before {
         display: inline-block;
     }
 
     #container {
-        margin: 2.5em 3.4375em;
+        margin: 0 3.4375em;
     }
 
     main {
         flex-direction: row;
         flex-grow: 0;
-        margin: auto 5% auto;
         padding: 0;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: space-around;
+    }
+
+    #pageTitle {
+        flex-basis: 100%;
+        flex-shrink: 0;
+        font-size: 1.75em;
     }
 
     main #contentWrapper {
         text-align: left;
         align-items: center;
+        flex-grow: 0;
     }
 
     main #content {
-        width: 28em;
-        text-align:left;
+        width: 32em;
+        text-align: left;
         align-items: stretch;
+    }
+
+    /* Home page styles */
+    #homePage main {
+        width: 100%;
+        max-width: 72em;
     }
 
     #homePage #buttonWrapper {
         align-self: stretch;
         flex-direction: row;
         align-items: flex-end;
+        justify-content: flex-end;
     }
 
     #homePage #buttonWrapper .button {
@@ -618,36 +722,123 @@ main, #contentWrapper, #content {
         height: 17.125rem;
     }
 
-    #destinationPage h3 {
-        font-size: 6.25em;
-    }
-
-    #destinationPage article {
-        grid-column: 2;
-        grid-row: 2;
-        text-align: left;
-        row-gap: 2em;
-        min-height: 100%;
-        align-items: flex-start;
+    /* Destination page styles */
+    #destinationPage {
+        background-image: url(assets/destination/background-destination-desktop.jpg);
     }
 
     #destinationPage #planetWrapper {
-        flex-grow: 1;
         display: flex;
         align-items: center;
         align-self: center;
-        grid-column: 1;
-        grid-row: 2;
+        justify-content: center;
     }
 
     #destinationPage .planet {
         width: 26em;
         height: 26em;
+        display: block;
+    }
+
+    #destinationNav {
+        justify-content: flex-start;
     }
 
     #destinationPage #destinationStats {
         column-gap: 6em;
         justify-content: flex-start;
+    }
+
+    /* Crew page styles */
+    #crewPage #crewImageWrapper {
+        align-self: flex-end;
+    }
+
+    #crewPage #crewImage {
+        width: auto;
+    }
+
+    #crewPage #contentWrapper {
+        align-items: flex-start;
+    }
+
+    #crewPage #content {
+        margin: 0;
+    }
+
+    #crewPage #content p {
+        margin: 0;
+    }
+
+    #crewPage h3 {
+        font-size: 2em;
+    }
+
+    #crewPage h3 em {
+        font-size: 3.5rem;
+    }
+
+    #crewNav {
+        margin: auto 0 0;
+    }
+
+    #crewNav a {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    /* Tech pages styles */
+    #techPage {
+        background-image: url(assets/tech/background-technology-desktop.jpg);
+    }
+
+    #techPage main {
+        flex-direction: row-reverse;
+        margin: auto -3.4375em auto 3.4375em;
+    }
+
+    #techPage #techImageWrapper {
+        flex-basis: 30%;
+        margin-left: auto;
+    }
+
+    #techPage #techNav {
+        order: 1;
+    }
+
+    #techPage #techImageWrapper #portraitImage {
+        display: block;
+    }
+
+    #techPage #techImageWrapper #landscapeImage {
+        display: none;
+    }
+
+    #techNav ol {
+        flex-direction: column;
+        row-gap: 1em;
+    }
+
+    #techNav a {
+        width: 5rem;
+        height: 5rem;
+        line-height: 5rem;
+        font-size: 2em;
+    }
+
+    #techPage article {
+        flex-basis: 30%;
+        text-align: left;
+        margin-left: auto;
+    }
+
+    #techPage h3 {
+        font-size: 0;
+    }
+
+    #techPage em {
+        font-size: 3.5rem;
+        line-height:1.5;
     }
 }
 
